@@ -58,6 +58,14 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
+.form{
+    margin-top:40px;
+}
+
+.title{
+    margin-top:80px;
+}
+
 .form input, .form button {
     height: 50px;
 }
@@ -112,9 +120,36 @@ body {
 #bookmark-panel {
     position: fixed;
     top: 0px;
-    left:-4000px;
+    left: -4000px;
     background: #eaeaea;
     height: 100%;
-    width: 18%;
+    width: 300px;
     padding: 20px;
+}
+
+
+
+.card a {
+    color: white !important;
+}
+
+#error{
+    text-align:center;
+    color:red;
+}
+
+@media(max-width:1060px) {
+    #repository-result .card {
+        width: 40%;
+        margin: 10px 5px;
+        height: 60px;
+    }
+}
+
+@media(max-width:760px) {
+    #repository-result .card {
+        width: 100%;
+        margin: 10px 5px;
+        height: 60px;
+    }
 }

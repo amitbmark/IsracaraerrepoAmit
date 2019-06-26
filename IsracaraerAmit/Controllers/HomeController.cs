@@ -43,18 +43,15 @@ namespace IsracaraerAmit.Controllers
                     }
                     catch (Exception)
                     {
-
                         throw;
                     }
-
                 }
         }
-
             return listOfRepository;
-
         }
 
 
+        //add selected repository to session
         public List<RepositoryItem> SessionManager(int id)
         {
             var currentRepo = from item in listOfRepository[0].Items
@@ -72,6 +69,7 @@ namespace IsracaraerAmit.Controllers
         }
 
 
+        //clear session repository list
         public async Task<IActionResult> Clear()
         {
             RepositoryListBookmark.Clear();

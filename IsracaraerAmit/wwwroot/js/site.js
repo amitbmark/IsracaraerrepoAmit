@@ -5,7 +5,9 @@
 
 (function () {
 
+
     var submitButton = document.getElementById("submit");
+
     submitButton.addEventListener('click', GetData);
 
     function GetData(e) {
@@ -14,6 +16,7 @@
         var repositoryName = document.getElementById("repositoryName").value;
         var repository_result = document.getElementById("repository-result");
         repository_result.innerHTML = "";
+        $("#error").html("");
         var len = 0;
 
         $.get({
@@ -21,7 +24,11 @@
             url: url,
             data: { repositoryName: repositoryName },
             success: function (result) {
+              
                 len = result[0].items.length;
+                if (len <= 1) {
+                    $("#error").html("Sorry, but no results found!");
+                }
                 loopResult = result[0].items;
                 loopResult.forEach(function (item, key) {
                     var id = item.id;
@@ -56,20 +63,22 @@
                     card.appendChild(row);
                     repository_result.appendChild(card);
 
-                    $(".bookmark").click(function () {
-                        $("#bookmark-content").html("");
-                    });
+                 
                     
 
                     bookmark.addEventListener('click', (function (id) {
+                        $(".bookmark").click(function () {
+                            $("#bookmark-content").html("");
+                        });
                         var bookmark_panel = document.getElementById("bookmark-content");
-                        bookmark_panel.innerHTML = " ";
+                       
                    return function () {
                             $.get({
                                 type: 'GET',
                                 url: '/Home/SessionManager',
                                 data: { id: id },
                                 success: function (res) {
+                                   
                                     res.forEach(function (item, key) {
                                         var card = document.createElement("div");
                                         card.className = "card";
@@ -106,27 +115,22 @@
                   
 
                 });
+            },error: function () {
+                alert('error!');
             }
         });
     }
 
 
+
+    //Slide bookmark panel
+
     var bookmark_panel_button = document.getElementById("open-bookmark");
     var bookmark_pane = document.getElementById("bookmark-panel");
     bookmark_panel_button.addEventListener('click', open_bookmark);
 
-    function open_bookmark() {  
-        $("#bookmark-panel").animate({
-            "left": "0px"
-        });
-    }
-
-
-    $("input").click(function () {  
-            $("#bookmark-panel").animate({
-                "left": "-400px"
-            });      
-    });
+    function open_bookmark() { $("#bookmark-panel").animate({"left": "0px" });}
+    $("input").click(function () {$("#bookmark-panel").animate({"left": "-400px"});});
  
 
 
