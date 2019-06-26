@@ -1,0 +1,54 @@
+﻿@model IsracaraerAmit.Models.RepositoryItem
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="form">
+        <form>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input asp-for="Name" id="repositoryName" class="form-control" placeholder="Search Repository..." />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" id="submit" class="btn btn-success btn-block">Search</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="repository-result"></div>
+    <button id="open-bookmark" class="btn btn-outline-info">Open Bookmark</button>
+    <div id="bookmark-panel">
+        <h4 align="center">Bookmarks Repositories</h4>
+        <a asp-action="Clear">Clear</a>
+        <div id="bookmark-content">
+            @{
+                if (ViewBag.Repositories != null)
+                {
+                    @foreach (var item in ViewBag.Repositories)
+                    {
+                        <div class="card">
+                            <div class="row-element">
+                                <div class="col-md-8">
+                                    <p>@item.Name</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="@item.Avatar.avatar_url" class="avatar">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            }
+        </div>
+    </div>
+</div>
+
+
