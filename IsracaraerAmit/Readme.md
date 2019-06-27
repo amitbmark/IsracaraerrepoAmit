@@ -1,7 +1,7 @@
 ﻿
 Github Reposetory Search 
 
-MVC .NET CIRE 2.2
+MVC .NET CORE 2.2
 
 ## Isracart project 
 Contributors: Amit Levi
