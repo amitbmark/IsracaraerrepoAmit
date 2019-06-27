@@ -13,7 +13,7 @@ also you able to add choosen repositories to bookmark section.
 
 
 ## Installation  
-Restore package manager and run the app
+Restore package manager and run the app on .ner core 2.2 
 
 
 ## Usage 
