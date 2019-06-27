@@ -17,6 +17,7 @@ namespace IsracaraerAmit.Controllers
 
         public IActionResult Index()
         {
+            //add session bookmark to list and store in viewbag
             if(RepositoryListBookmark != null)
             {
                 ViewBag.Repositories = RepositoryListBookmark;
@@ -25,7 +26,7 @@ namespace IsracaraerAmit.Controllers
         }
 
 
-        //serarch repository action
+        //search repository action 
         public async Task<List<RepositoryRoot>> Search(string repositoryName)
         {
             listOfRepository.Clear();
@@ -63,8 +64,6 @@ namespace IsracaraerAmit.Controllers
                 var getObg = HttpContext.Session.GetObj<RepositoryItem>("bookmarkSession");
                 RepositoryListBookmark.Add(getObg);
             }
-
-
             return RepositoryListBookmark;
         }
 
